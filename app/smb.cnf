@@ -1,0 +1,28 @@
+# Global parameters
+[global]
+	dns proxy = No
+	log file = /var/log/samba/log.%m
+	map to guest = Bad User
+	max log size = 1000
+	obey pam restrictions = Yes
+	pam password change = Yes
+	panic action = /usr/share/samba/panic-action %d
+	passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+	passwd program = /usr/bin/passwd %u
+	server role = standalone server
+	server string = %h server (Samba, Ubuntu)
+	syslog = 0
+	unix password sync = Yes
+	usershare allow guests = Yes
+	idmap config * : backend = tdb
+
+
+[publico]
+	comment = Directorio publico
+	browsable = yes
+	force create mode = 0774
+	force directory mode = 2774
+	path = /compartida
+	read only = no
+	valid users = @smb
+	admin users = smbuser miguel

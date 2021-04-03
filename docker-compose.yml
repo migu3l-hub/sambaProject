@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  samba:
+    image: migu3lhub/misamba
+    restart: always
+    container_name: samba
+    env_file:
+      - app/smb.env
+    ports:
+    - 139:139
+    - 445:445
+    volumes:
+      - ./app/smb.cnf:/etc/samba/smb.conf # El archivo dentro del contenedor se llama smb.conf
+      - ./compartida:/compartida
